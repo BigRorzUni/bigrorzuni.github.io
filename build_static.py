@@ -6,9 +6,6 @@ from App import create_app
 from App import home, projects
 
 
-# GitHub Pages repository path
-SITE_PREFIX = "/Portfolio"
-
 
 # Create Flask application
 app = create_app()
@@ -29,13 +26,7 @@ output_dir.mkdir()
 
 
 def save_page(url, output_path):
-    # Tell Flask that the website is hosted under /Portfolio
-    response = app.test_client().get(
-        url,
-        environ_overrides={
-            "SCRIPT_NAME": SITE_PREFIX
-        }
-    )
+    response = app.test_client().get(url)
 
     if response.status_code != 200:
         raise RuntimeError(
@@ -53,7 +44,7 @@ save_page("/", output_dir / "index.html")
 
 
 # Generate project pages
-for project_id in projects.projects:
+for project_id in projects.projects: 
     save_page(
         f"/projects/{project_id}",
         output_dir / "projects" / project_id / "index.html"
