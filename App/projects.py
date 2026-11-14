@@ -96,12 +96,7 @@ projects = {
 
         "github": "https://github.com/BigRorzUni/MultipleStyleRendering",
 
-        "links": [
-            {
-                "title": "GitHub Repository",
-                "url": "https://github.com/BigRorzUni/MultipleStyleRendering"
-            }
-        ]
+        "links": None
     }
 }
 

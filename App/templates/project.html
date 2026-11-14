@@ -5,33 +5,10 @@
 
 {% block content %}
 
-<p>
-    <a href="{{ url_for('home.index') }}#projects">
-        &lt; Back to projects
-    </a>
-</p>
-
 <section>
     <h2>{{ project.title }}</h2>
 
-    <p><strong>{{ project.subtitle }}</strong></p>
-
-    <p>
-        <strong>Date:</strong> {{ project.date }}
-        |
-        <strong>Status:</strong> {{ project.status }}
-    </p>
-
     <p>{{ project.description }}</p>
-</section>
-
-<section>
-    <h2>Overview</h2>
-    <p>{{ project.overview }}</p>
-</section>
-
-<section>
-    <h2>Technologies</h2>
 
     {% for technology in project.technologies %}
         <span class="technology">{{ technology }}</span>
@@ -39,7 +16,7 @@
 </section>
 
 <section>
-    <h2>Key Features</h2>
+    <h2>Features</h2>
 
     <ul>
         {% for feature in project.features %}
@@ -48,38 +25,36 @@
     </ul>
 </section>
 
-{% if project.images %}
+{% if project.images or project.videos %}
 <section>
     <h2>Gallery</h2>
+    {% if project.images %}
+        {% for image in project.images %}
+            <div class="project-image">
+                <img
+                    src="{{ url_for('static', filename=image.src) }}"
+                    alt="{{ image.caption }}"
+                >
+                <p>{{ image.caption }}</p>
+            </div>
+        {% endfor %}
 
-    {% for image in project.images %}
-        <div class="project-image">
-            <img
-                src="{{ url_for('static', filename=image.src) }}"
-                alt="{{ image.caption }}"
-            >
-            <p>{{ image.caption }}</p>
-        </div>
-    {% endfor %}
-</section>
-{% endif %}
+    {% endif %}
 
-{% if project.videos %}
-<section>
-    <h2>Video Demonstrations</h2>
+    {% if project.videos %}
+        {% for video in project.videos %}
+            <div class="project-video">
+                <video controls>
+                    <source
+                        src="{{ url_for('static', filename=video.src) }}"
+                        type="video/mp4">
+                    Your browser does not support video playback.
+                </video>
 
-    {% for video in project.videos %}
-        <div class="project-video">
-            <video controls>
-                <source
-                    src="{{ url_for('static', filename=video.src) }}"
-                    type="video/mp4">
-                Your browser does not support video playback.
-            </video>
-
-            <p>{{ video.caption }}</p>
-        </div>
-    {% endfor %}
+                <p>{{ video.caption }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
 </section>
 {% endif %}
 
@@ -123,19 +98,15 @@
             </a>
         </li>
 
-        <li>
-            <a href="{{ project.readme }}" target="_blank">
-                Project README
-            </a>
-        </li>
-
-        {% for link in project.links %}
-            <li>
-                <a href="{{ link.url }}" target="_blank">
-                    {{ link.title }}
-                </a>
-            </li>
-        {% endfor %}
+        {% if project.links %}
+            {% for link in project.links %}
+                <li>
+                    <a href="{{ link.url }}" target="_blank">
+                        {{ link.title }}
+                    </a>
+                </li>
+            {% endfor %}
+        {% endif %}
     </ul>
 </section>
 
