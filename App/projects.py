@@ -54,11 +54,59 @@ projects = {
     #         }
     #     ]
     # },
+    
+    # "projecttemplate": 
+    # {
+    #     "title": "Template Project",
+    #     "subtitle": "Placeholder",
+    #     "date": "Start - End",
+    #     "technologies": ["", ],
 
-    "multi-style-rendering": {
+    #     "description": """
+
+    #     """,
+
+    #     "features": [
+    #         "",
+    #     ],
+
+    #     "images": [
+    #         {
+    #             "src": "",
+    #             "caption": ""
+    #         },
+    #     ],
+
+    #     "videos": [
+    #         {
+    #             "src": "",
+    #             "caption": ""
+    #         },
+    #     ],
+
+    #     "documents": [
+    #         {
+    #             "src": "",
+    #             "title": ""
+    #         },
+    #     ],
+
+    #     "github": "",
+
+    #     "links": [
+    #         {
+    #             "title": "",
+    #             "url": "",
+    #             "download": False
+    #         },
+    #     ]
+    # },
+
+    "multi-style-rendering": 
+    {
         "title": "Multi Style NPR Rendering Pipeline",
         "subtitle": "A framework to render multiple NPR styles in a performant manner for Unity3D",
-        "date": "2026",
+        "date": "September 2025 - June 2026",
         "status": "Completed",
         "technologies": ["C#", "HLSL", "Unity3D", "RenderGraph", "Scriptable Render Pipeline"],
 
@@ -67,15 +115,11 @@ projects = {
             effects in a single realtime scene. I carried this out using Unity's scriptable render pipeline.
         """,
 
-        "overview": """
-
-        """,
-
         "features": [
             "CPU Bounding-Box Localisation",
             "GPU Bounding-Box Localisation",
-            "GPU Tiling Localisation"
-            "Scriptable Render Passes"
+            "GPU Tiling Localisation",
+            "Scriptable Render Passes",
         ],
 
         "images": [
@@ -92,12 +136,69 @@ projects = {
             }
         ],
 
-        "pdf": "documents/multi-style-renderer/EDMONDS26-FINAL.pdf",
+        "documents": [
+            {
+                "src": "documents/multi-style-renderer/EDMONDS26-FINAL.pdf",
+                "title": "Final Report"
+            }
+        ],
 
         "github": "https://github.com/BigRorzUni/MultipleStyleRendering",
 
         "links": None
-    }
+    },
+
+    "gpu-physics-engines": 
+    {
+        "title": "Comparison of GPU & CPU based Physics Engines",
+        "subtitle": "An internship project for the robotics department at the University of Leeds",
+        "date": "July 2025 - September 2025",
+        "technologies": ["",],
+
+        "description": """
+
+        """,
+
+        "overview": """
+
+        """,
+
+        "features": [
+            "yewh",
+            ""
+        ],
+
+        "images": None,
+
+        "videos": [
+            {
+                "src": "videos/gpu-physics-engines/newton-cartpole.mp4",
+                "caption": "Demonstration of Trajectory Optimisation on a cartpole scene in Newton"
+            }
+        ],
+
+        "documents": [
+            {
+                "src": "documents/gpu-physics-engines/Report.pdf",
+                "title": "Report of Findings"
+            },
+            {
+                "src": "documents/gpu-physics-engines/InternshipPresentation.pdf",
+                "title": "PDF of Presentation"
+            },
+        ],
+
+        "github": "https://github.com/BigRorzUni/Apptainer_GPU_Physics_Simulators",
+
+        "links": [
+            {
+                "title": "Download Presentation",
+                "url": "documents/gpu-physics-engines/InternshipPresentation.pptx",
+                "download": True
+            }
+        ]
+    },
+
 }
 
 

@@ -58,56 +58,56 @@
 </section>
 {% endif %}
 
-{% if project.pdf %}
+{% if project.documents %}
 <section>
-    <h2>Project Document</h2>
+    <h2>Project Documents</h2>
 
-    <details>
-        <summary>View PDF: {{ project.title }}</summary>
+    {% for pdf in project.documents %}
+        <details>
+            <summary>{{ pdf.title }}</summary>
 
-        <p>
-            <a href="{{ url_for('static', filename=project.pdf) }}"
-               target="_blank"
-               rel="noopener noreferrer">
-                Open PDF in new tab
-            </a>
-            |
-            <a href="{{ url_for('static', filename=project.pdf) }}"
-               download>
-                Download PDF
-            </a>
-        </p>
+            <p>
+                <a href="{{ url_for('static', filename=pdf.src) }}"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Open PDF in new tab
+                </a>
+                |
+                <a href="{{ url_for('static', filename=pdf.src) }}"
+                   download>
+                    Download PDF
+                </a>
+            </p>
 
-        <div class="pdf-container">
-            <iframe
-                src="{{ url_for('static', filename=project.pdf) }}"
-                title="{{ project.title }} PDF document">
-            </iframe>
-        </div>
-    </details>
+            <div class="pdf-container">
+                <iframe
+                    src="{{ url_for('static', filename=pdf.src) }}"
+                    title="{{ pdf.title }}">
+                </iframe>
+            </div>
+        </details>
+    {% endfor %}
 </section>
 {% endif %}
 
 <section>
     <h2>Source Code & Resources</h2>
 
-    <ul>
-        <li>
-            <a href="{{ project.github }}" target="_blank">
-                GitHub Repository
-            </a>
-        </li>
+    <a href="{{ project.github }}" target="_blank">GitHub Repository</a>
 
-        {% if project.links %}
-            {% for link in project.links %}
-                <li>
-                    <a href="{{ link.url }}" target="_blank">
-                        {{ link.title }}
-                    </a>
-                </li>
-            {% endfor %}
-        {% endif %}
-    </ul>
+    <br><br>
+
+    {% if project.links %}
+        {% for link in project.links %}
+                {% if link.download %}
+                    <a href="{{ url_for('static', filename=link.url) }}" download>{{ link.title }}</a>
+                {% else %}
+                    <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.title }}</a>
+                {% endif %}
+                <br><br>
+        {% endfor %}
+    {% endif %}
+
 </section>
 
 {% endblock %}
